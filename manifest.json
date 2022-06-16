@@ -1,0 +1,43 @@
+{
+  "name": "PKU_NMR_Plugin",
+  "manifest_version": 3,
+  "version": "2.0",
+  "description": "PKU核磁预约查看器",
+  "icons": {
+    "16":"PKU.png",
+    "48":"PKU.png",
+    "128":"PKU.png"
+  },
+  "permissions": [
+    "webRequest"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://222.29.46.228/admin/Reserve/reserve_info*"
+      ],
+      "js": [
+        "pkunmr_viewer.js"
+      ],
+      "all_frames": true
+    },
+    {
+      "matches":[
+        "http://222.29.46.228/admin/Daq/MyDaq*"
+      ],
+      "js": [
+        "pkunmr_data.js"
+      ],
+      "all_frames": true
+
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["patch-ajaxReserve.js"],
+      "matches": [
+        "http://222.29.46.228/*"
+      ]
+    }
+  ]
+}
